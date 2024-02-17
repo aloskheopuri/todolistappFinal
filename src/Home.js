@@ -8,41 +8,33 @@ import Checkbox from '@mui/material/Checkbox';
 import Filter from './Component/Filter';
 
 export default function Home() {
-  //using hooks for storing task in array
+  // using hooks for storing task in array
   const [tasks, setTasks] = useState([]);
-  
   const [taskTitle, setTaskTitle] = useState('');
-
-  //For filtering Result 
   const [filter, setFilter] = useState('all');
 
-  //Handling value change
   const handleOnChange = (e) => {
     setTaskTitle(e.target.value);
   };
 
-  //Handling on task submitting
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (taskTitle.trim() !== '') {
       const newTask = {
+        id: Date.now(), // Unique identifier for each task
         title: taskTitle,
         completed: false,
       };
-
-      // Add new task to the top of the list
-      setTasks([newTask, ...tasks]); 
+      setTasks([newTask, ...tasks]);
       setTaskTitle('');
     }
   };
 
-  //handling delete
   const handleOnDelete = (taskId) => {
     const updatedTasks = tasks.filter((task) => taskId !== task.id);
     setTasks(updatedTasks);
   };
 
-  //handling checkbox if task is completed
   const handleToggleCompletion = (taskId) => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
@@ -50,7 +42,6 @@ export default function Home() {
     setTasks(updatedTasks);
   };
 
-  //result on basis of filteration
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -61,36 +52,28 @@ export default function Home() {
     } else if (filter === 'uncompleted') {
       return !task.completed;
     } else {
-      return true; 
+      return true;
     }
   });
 
   return (
     <div>
       <center>
-
         <div className='to-do-list-container'>
-
           <div className='list-heading'>
             <h1>To-Do List</h1>
             <ListAltIcon />
           </div>
 
           <div className='Add-Container'>
-
             <form onSubmit={handleOnSubmit}>
               <input onChange={handleOnChange} value={taskTitle} className='AddTask' type="text" />
               <button type="submit" className='addbutton'>Add Task</button>
             </form>
-
-           {/* Used props here to pass data from filter to home */}
-           <Filter filter={filter} handleFilterChange={handleFilterChange} />
-
+            <Filter filter={filter} handleFilterChange={handleFilterChange} />
           </div>
 
           <div className='list-of-tasks'>
-
-            {/* applying mapping on filterd result */}
             <ul>
               {filteredTasks.map((task) => (
                 <li className='list-item' key={task.id}>
@@ -113,11 +96,9 @@ export default function Home() {
                       <DeleteIcon />
                     </IconButton>
                   </div>
-
                 </li>
               ))}
             </ul>
-
           </div>
         </div>
       </center>
