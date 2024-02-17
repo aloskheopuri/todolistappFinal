@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Filter from './Component/Filter';
 
 export default function Home() {
-  // using hooks for storing task in array
+  // using hooks for storing task in array.
   const [tasks, setTasks] = useState([]);
   const [taskTitle, setTaskTitle] = useState('');
   const [filter, setFilter] = useState('all');
