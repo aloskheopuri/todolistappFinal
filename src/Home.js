@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Filter from './Component/Filter';
 
 export default function Home() {
-
+  //using hooks for storing task in array
   const [tasks, setTasks] = useState([]);
   
   const [taskTitle, setTaskTitle] = useState('');
@@ -16,10 +16,12 @@ export default function Home() {
   //For filtering Result 
   const [filter, setFilter] = useState('all');
 
+  //Handling value change
   const handleOnChange = (e) => {
     setTaskTitle(e.target.value);
   };
 
+  //Handling on task submitting
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (taskTitle.trim() !== '') {
@@ -27,17 +29,20 @@ export default function Home() {
         title: taskTitle,
         completed: false,
       };
+
       // Add new task to the top of the list
       setTasks([newTask, ...tasks]); 
       setTaskTitle('');
     }
   };
 
+  //handling delete
   const handleOnDelete = (taskId) => {
     const updatedTasks = tasks.filter((task) => taskId !== task.id);
     setTasks(updatedTasks);
   };
 
+  //handling checkbox if task is completed
   const handleToggleCompletion = (taskId) => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
@@ -45,6 +50,7 @@ export default function Home() {
     setTasks(updatedTasks);
   };
 
+  //result on basis of filteration
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
@@ -77,11 +83,14 @@ export default function Home() {
               <button type="submit" className='addbutton'>Add Task</button>
             </form>
 
+           {/* Used props here to pass data from filter to home */}
            <Filter filter={filter} handleFilterChange={handleFilterChange} />
 
           </div>
 
           <div className='list-of-tasks'>
+
+            {/* applying mapping on filterd result */}
             <ul>
               {filteredTasks.map((task) => (
                 <li className='list-item' key={task.id}>
