@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.to-do-list-container {
+    border: 6px solid #e91e63;
+    border-radius: 15px;
+    width: 580px;
+    max-height: 700px;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: #fff;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .list-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .list-heading h1 {
+    color: #ff5722;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
   }
-}
+  
+  .Add-Container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .AddTask {
+    flex: 1;
+    border: 2px solid #e91e63;
+    border-radius: 20px;
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  
+  .addbutton {
+    border: 2px solid #e91e63;
+    background-color: #ff5722;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .addbutton:hover {
+    background-color: #e91e63;
+  }
+  
+  .filter {
+    border: 2px solid #e91e63;
+    background-color: #ff5722;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    width: 150px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .filter:hover {
+    background-color: #e91e63;
+  }
+  
+  .list-of-tasks {
+    margin-top: 20px;
+  }
+  
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .task-title {
+    flex: 1;
+    font-size: 18px;
+  }
+  
+  .task-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .task-actions button {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .task-actions button:hover {
+    background-color: #e91e63;
+  }
+  
